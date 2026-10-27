@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <p>student dashboard</p>
+    <p>user dashboard</p>
+     <p>Selamat datang, {{ auth()->user()->name }}</p>
+    <p>Role: {{ auth()->user()->role }}</p>
 </body>
 </html>
