@@ -10,5 +10,9 @@
     <p>user dashboard</p>
      <p>Selamat datang, {{ auth()->user()->name }}</p>
     <p>Role: {{ auth()->user()->role }}</p>
+    <form action="{{ route('logout') }}" method="POST" class="logout-form">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
 </body>
 </html>
