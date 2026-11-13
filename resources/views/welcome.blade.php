@@ -15,7 +15,7 @@
         <div id="intro-bg" class="absolute inset-0 bg-black"></div>
         <span id="intro-brand"
               class="relative opacity-0 origin-top-left text-white text-5xl md:text-7xl font-semibold uppercase tracking-[0.3em] will-change-transform">
-            Laravel
+            HITAM
         </span>
     </div>
 
@@ -29,9 +29,9 @@
                 <a href="#" class="transition hover:opacity-60">Help</a>
             </div>
 
-            <a id="nav-brand" href="#"
+            <a id="nav-brand"
                class="col-start-2 justify-self-center text-xl font-semibold uppercase tracking-[0.3em] text-neutral-900 opacity-0">
-                Laravel
+                HITAM
             </a>
 
             <div class="col-start-3 flex items-center justify-end gap-4">
@@ -41,7 +41,7 @@
                         <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
                     </svg>
                 </button> --}}
-                <a href="#"
+                <a href="{{ route('login') }}"
                    class="hidden sm:inline-block rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900">
                     Log in
                 </a>
