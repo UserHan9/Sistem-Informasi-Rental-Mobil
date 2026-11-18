@@ -358,3 +358,216 @@ Repository Utama (upstream)
           v
   Repository Utama (main)
 ```
+# Git Workflow (Direct Branch)
+
+Metode ini digunakan agar setiap contributor dapat bekerja pada branch masing-masing dalam satu repository utama tanpa menggunakan Fork maupun Pull Request.
+
+Setiap anggota wajib menggunakan branch yang berbeda agar perubahan kode tidak saling bertabrakan.
+
+## 1. Clone Repository
+
+Clone repository utama:
+
+```bash
+git clone git@github.com:UserHan9/Sistem-Informasi-Rental-Mobil.git
+```
+
+Masuk ke direktori project:
+
+```bash
+cd Sistem-Informasi-Rental-Mobil
+```
+
+## 2. Sinkronisasi Repository
+
+Sebelum mulai coding, ambil perubahan terbaru dari repository:
+
+```bash
+git switch main
+git pull origin main
+```
+
+## 3. Membuat Branch Masing-Masing
+
+Setiap contributor wajib membuat branch sendiri.
+
+Contoh:
+
+```bash
+git switch -c feature/login
+```
+
+Contoh pembagian branch:
+
+| Contributor | Branch |
+|---|---|
+| Anggota 1 | `feature/login` |
+| Anggota 2 | `feature/register` |
+| Anggota 3 | `feature/dashboard` |
+| Anggota 4 | `feature/rental` |
+| Anggota 5 | `feature/vehicle` |
+
+Contoh prefix branch:
+
+| Prefix | Kegunaan | Contoh |
+|---|---|---|
+| `feature/` | Menambahkan fitur | `feature/register` |
+| `fix/` | Memperbaiki bug | `fix/login-error` |
+| `update/` | Memperbarui fitur | `update/dashboard` |
+| `docs/` | Memperbarui dokumentasi | `docs/readme` |
+
+> Pastikan setiap anggota menggunakan branch yang berbeda.
+
+## 4. Coding dan Commit
+
+Setelah selesai mengerjakan fitur, periksa perubahan:
+
+```bash
+git status
+```
+
+Tambahkan perubahan ke staging area:
+
+```bash
+git add .
+```
+
+Lakukan commit:
+
+```bash
+git commit -m "feat: add login feature"
+```
+
+Contoh commit message:
+
+```bash
+git commit -m "feat: add register feature"
+git commit -m "fix: resolve login validation"
+git commit -m "update: improve dashboard layout"
+```
+
+## 5. Push ke Branch Masing-Masing
+
+Push perubahan ke branch yang sudah dibuat:
+
+```bash
+git push -u origin feature/login
+```
+
+Ganti `feature/login` sesuai branch masing-masing.
+
+Contoh:
+
+Anggota 1:
+
+```bash
+git push -u origin feature/login
+```
+
+Anggota 2:
+
+```bash
+git push -u origin feature/register
+```
+
+Anggota 3:
+
+```bash
+git push -u origin feature/dashboard
+```
+
+Anggota 4:
+
+```bash
+git push -u origin feature/rental
+```
+
+Anggota 5:
+
+```bash
+git push -u origin feature/vehicle
+```
+
+Setelah push berhasil, perubahan akan tersimpan pada branch masing-masing di GitHub dan tidak langsung mengubah branch `main`.
+
+## 6. Push Perubahan Berikutnya
+
+Jika sebelumnya sudah pernah melakukan push pada branch tersebut, cukup jalankan:
+
+```bash
+git add .
+git commit -m "update: improve login feature"
+git push origin feature/login
+```
+
+Tidak perlu membuat branch baru lagi selama masih mengerjakan fitur yang sama.
+
+## 7. Mengambil Perubahan Terbaru dari Main
+
+Jika branch `main` mendapatkan perubahan terbaru dari anggota lain atau maintainer, ambil perubahan tersebut:
+
+```bash
+git fetch origin
+```
+
+Pindah ke branch main:
+
+```bash
+git switch main
+git pull origin main
+```
+
+Kembali ke branch masing-masing:
+
+```bash
+git switch feature/login
+```
+
+Gabungkan perubahan terbaru dari main ke branch fitur:
+
+```bash
+git merge main
+```
+
+Jika terjadi conflict:
+
+1. Buka file yang mengalami conflict.
+2. Perbaiki bagian kode.
+3. Simpan perubahan.
+4. Jalankan:
+
+```bash
+git add .
+git commit -m "fix: resolve merge conflicts"
+git push origin feature/login
+```
+
+## 8. Melihat Daftar Branch
+
+Untuk melihat seluruh branch lokal:
+
+```bash
+git branch
+```
+
+Untuk melihat seluruh branch yang tersedia di repository remote:
+
+```bash
+git branch -r
+```
+
+Untuk berpindah branch:
+
+```bash
+git switch feature/login
+```
+
+Untuk membuat branch baru:
+
+```bash
+git switch -c feature/nama-fitur
+```
+
+---
+
+**Catatan:** Push ke branch masing-masing tidak otomatis menggabungkan kode ke `main`. Penggabungan ke `main` dilakukan secara terpisah oleh maintainer setelah perubahan diperiksa dan dinyatakan siap.
